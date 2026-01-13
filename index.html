@@ -30,14 +30,12 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Container */
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        /* Hero */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, #0a2454 100%);
             padding: 40px 20px;
@@ -59,7 +57,6 @@
             font-weight: 300;
         }
 
-        /* Section */
         .section {
             background: white;
             border: 1px solid var(--border);
@@ -79,7 +76,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Typography */
         h2 {
             font-size: 20px;
             font-weight: 600;
@@ -102,7 +98,6 @@
             font-size: 15px;
         }
 
-        /* Form Elements */
         .form-group {
             margin-bottom: 16px;
         }
@@ -120,6 +115,7 @@
         input[type="tel"],
         input[type="number"],
         input[type="date"],
+        input[type="url"],
         select,
         textarea {
             width: 100%;
@@ -139,7 +135,6 @@
             box-shadow: 0 0 0 2px rgba(240, 193, 72, 0.1);
         }
 
-        /* Grid Layouts */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -158,7 +153,6 @@
             }
         }
 
-        /* Checkbox/Radio Groups */
         .option-group {
             display: flex;
             flex-wrap: wrap;
@@ -192,7 +186,6 @@
             border-color: var(--accent);
         }
 
-        /* Checkbox Grid for Many Options */
         .checkbox-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -225,7 +218,6 @@
             border-color: var(--accent);
         }
 
-        /* Buttons */
         .btn {
             padding: 10px 24px;
             font-size: 15px;
@@ -248,6 +240,14 @@
             box-shadow: var(--shadow-md);
         }
 
+        .btn-primary:disabled {
+            background: #ccc;
+            color: #666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
         .btn-secondary {
             background: var(--light-gray);
             color: var(--primary);
@@ -266,7 +266,6 @@
             border-top: 1px solid var(--border);
         }
 
-        /* Progress Bar */
         .progress-container {
             background: var(--light-gray);
             height: 4px;
@@ -282,7 +281,6 @@
             border-radius: 2px;
         }
 
-        /* SVI Map */
         .svi-map {
             width: 100%;
             height: 400px;
@@ -291,7 +289,6 @@
             margin: 12px 0;
         }
 
-        /* Info Box */
         .info-box {
             background: var(--light-gray);
             padding: 12px;
@@ -301,7 +298,6 @@
             font-size: 14px;
         }
 
-        /* Assessment Results */
         .results-container {
             background: linear-gradient(135deg, var(--primary) 0%, #0a2454 100%);
             color: white;
@@ -328,7 +324,6 @@
             margin-top: 8px;
         }
 
-        /* External Link Icon */
         .external-link {
             color: var(--accent);
             text-decoration: none;
@@ -340,34 +335,72 @@
             font-size: 12px;
         }
 
-        /* Hidden */
         .hidden {
             display: none !important;
         }
 
-        /* Loading */
-        .loading {
-            opacity: 0.6;
-            pointer-events: none;
-        }
-
-        /* County follow-up */
         .county-question {
             margin-top: 16px;
             padding-top: 16px;
             border-top: 1px solid var(--border);
         }
+
+        .word-count {
+            font-size: 12px;
+            color: #666;
+            text-align: right;
+            margin-top: 4px;
+        }
+
+        .word-count.over-limit {
+            color: #dc3545;
+            font-weight: 500;
+        }
+
+        .consent-box {
+            background: var(--light-gray);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .consent-box h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .consent-box p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .signature-field {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .signature-field label {
+            font-weight: 600;
+        }
+
+        .discipline-followup {
+            margin-top: 12px;
+            padding: 12px;
+            background: var(--light-gray);
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
-    <!-- Hero Header -->
     <div class="hero">
         <h1>Houston Arts Alliance Disaster Relief Fund</h1>
         <p>Emergency assistance for Houston's arts sector</p>
     </div>
 
     <div class="container">
-        <!-- Progress Bar -->
         <div class="progress-container">
             <div class="progress-bar" id="progressBar" style="width: 14%"></div>
         </div>
@@ -413,7 +446,7 @@
             <div class="grid-3">
                 <div class="form-group">
                     <label for="city">City *</label>
-                    <input type="text" id="city" value="Houston" required>
+                    <input type="text" id="city" placeholder="Houston" required>
                 </div>
                 <div class="form-group">
                     <label for="state">State *</label>
@@ -441,6 +474,24 @@
             <div class="form-group">
                 <label for="dob">Date of Birth *</label>
                 <input type="date" id="dob" required>
+            </div>
+
+            <h3>Online Presence</h3>
+            <p>Please provide at least one link to your website, portfolio, social media, or CV so we can learn more about your artistic practice.</p>
+            
+            <div class="form-group">
+                <label for="website">Website or Portfolio URL</label>
+                <input type="url" id="website" placeholder="https://www.yourwebsite.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="socialMedia">Social Media Profile URL</label>
+                <input type="url" id="socialMedia" placeholder="https://www.instagram.com/yourhandle">
+            </div>
+            
+            <div class="form-group">
+                <label for="cvLink">CV or Resume URL</label>
+                <input type="url" id="cvLink" placeholder="https://drive.google.com/your-resume.pdf">
             </div>
             
             <h3>Household Size</h3>
@@ -539,6 +590,55 @@
                     <option value="Waller">Waller</option>
                     <option value="none">None of these</option>
                 </select>
+            </div>
+
+            <div class="form-group" style="margin-top: 20px;">
+                <label>Are you an artist?</label>
+                <div class="option-group">
+                    <label class="option-card">
+                        <input type="radio" name="isArtist" value="yes" onchange="showDisciplineQuestion()">
+                        Yes
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="isArtist" value="no" onchange="showDisciplineQuestion()">
+                        No
+                    </label>
+                </div>
+            </div>
+
+            <div id="disciplineQuestion" class="discipline-followup hidden">
+                <div class="form-group">
+                    <label for="artisticDiscipline">What is your primary artistic discipline? *</label>
+                    <select id="artisticDiscipline">
+                        <option value="">Select a discipline...</option>
+                        <optgroup label="Visual Arts">
+                            <option value="Visual Arts - General">Visual Arts (General)</option>
+                            <option value="Design">Design</option>
+                            <option value="Film">Film</option>
+                            <option value="Public Art">Public Art</option>
+                        </optgroup>
+                        <optgroup label="Performing Arts">
+                            <option value="Performing Arts - General">Performing Arts (General)</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Music">Music</option>
+                            <option value="Performance Art">Performance Art</option>
+                            <option value="Theater">Theater</option>
+                        </optgroup>
+                        <optgroup label="Multidisciplinary">
+                            <option value="Multidisciplinary - General">Multidisciplinary (General)</option>
+                            <option value="Art + Social Practice">Art + Social Practice</option>
+                            <option value="Craft">Craft</option>
+                            <option value="Literary">Literary</option>
+                            <option value="Multimedia">Multimedia</option>
+                            <option value="Preservation">Preservation</option>
+                        </optgroup>
+                        <option value="Other">Other (please specify)</option>
+                    </select>
+                </div>
+                <div id="otherDisciplineField" class="form-group hidden">
+                    <label for="otherDiscipline">Please specify your discipline:</label>
+                    <input type="text" id="otherDiscipline" placeholder="Enter your artistic discipline">
+                </div>
             </div>
             
             <h3 style="margin-top: 24px;">Social Vulnerability Index</h3>
@@ -779,6 +879,14 @@
                 <option value="1">No loss but temporarily inaccessible</option>
                 <option value="1">Not sure yet: Unable to assess</option>
             </select>
+
+            <h3>Impact Statement</h3>
+            <p>Please describe how this disaster has impacted you, your household, and/or your artistic practice. Include any details about damage, displacement, lost income, or other hardships you've experienced.</p>
+            
+            <div class="form-group">
+                <textarea id="impactStatement" rows="8" maxlength="3500" placeholder="Describe how you were impacted by this disaster..." oninput="updateWordCount()"></textarea>
+                <div class="word-count" id="wordCount">0 / 500 words</div>
+            </div>
             
             <!-- Assessment Results -->
             <div class="results-container">
@@ -787,10 +895,28 @@
                 <p style="color: rgba(255,255,255,0.9);">Priority Score</p>
                 <div class="tier-badge" id="tierBadge">Calculating...</div>
             </div>
+
+            <!-- Consent Section -->
+            <div class="consent-box">
+                <h3>Consent and Authorization</h3>
+                <p>By submitting this information, you confirm that the details provided are accurate to the best of your knowledge. You understand that submission does not guarantee assistance or resources. You authorize Houston Arts Alliance to share information from this submission with partner agencies or organizations when necessary to address your request.</p>
+                
+                <div class="form-group">
+                    <label class="checkbox-item" style="background: white;">
+                        <input type="checkbox" id="consentCheckbox" onchange="checkConsent()">
+                        I have read and agree to the above statement
+                    </label>
+                </div>
+                
+                <div class="signature-field">
+                    <label for="signatureName">By entering your printed name below, you are providing your signature: *</label>
+                    <input type="text" id="signatureName" placeholder="Enter your full legal name" oninput="checkConsent()">
+                </div>
+            </div>
             
             <div class="btn-group">
                 <button class="btn btn-secondary" onclick="prevPage()">Back</button>
-                <button class="btn btn-primary" onclick="submitForm()">Submit Application</button>
+                <button class="btn btn-primary" id="submitBtn" onclick="submitForm()" disabled>Submit Application</button>
             </div>
         </div>
 
@@ -817,19 +943,12 @@
         }
 
         function showPage(pageNum) {
-            // Hide all pages
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
             });
-            
-            // Show current page
             document.getElementById('page' + pageNum).classList.add('active');
             updateProgress();
-            
-            // Scroll to top
             window.scrollTo(0, 0);
-            
-            // Calculate score on last page
             if (pageNum === 4) {
                 calculateScore();
             }
@@ -852,7 +971,6 @@
         }
 
         function validateCurrentPage() {
-            // Add validation logic here
             return true;
         }
 
@@ -872,6 +990,25 @@
                 countyQ.classList.add('hidden');
             }
         }
+
+        function showDisciplineQuestion() {
+            const selected = document.querySelector('input[name="isArtist"]:checked');
+            const disciplineQ = document.getElementById('disciplineQuestion');
+            if (selected && selected.value === 'yes') {
+                disciplineQ.classList.remove('hidden');
+            } else {
+                disciplineQ.classList.add('hidden');
+            }
+        }
+
+        document.getElementById('artisticDiscipline').addEventListener('change', function() {
+            const otherField = document.getElementById('otherDisciplineField');
+            if (this.value === 'Other') {
+                otherField.classList.remove('hidden');
+            } else {
+                otherField.classList.add('hidden');
+            }
+        });
 
         function toggleAssistanceDetails() {
             const selected = document.querySelector('input[name="receivedAssist"]:checked');
@@ -900,6 +1037,39 @@
                 otherField.classList.remove('hidden');
             } else {
                 otherField.classList.add('hidden');
+            }
+        }
+
+        function updateWordCount() {
+            const textarea = document.getElementById('impactStatement');
+            const wordCountDiv = document.getElementById('wordCount');
+            const text = textarea.value.trim();
+            
+            // Count words (split by whitespace and filter out empty strings)
+            const words = text.length > 0 ? text.split(/\s+/).filter(word => word.length > 0) : [];
+            const wordCount = words.length;
+            
+            // Update display
+            wordCountDiv.textContent = `${wordCount} / 500 words`;
+            
+            // Add warning class if over limit
+            if (wordCount > 500) {
+                wordCountDiv.classList.add('over-limit');
+            } else {
+                wordCountDiv.classList.remove('over-limit');
+            }
+        }
+
+        function checkConsent() {
+            const checkbox = document.getElementById('consentCheckbox');
+            const signature = document.getElementById('signatureName');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Enable submit button only if checkbox is checked AND signature field has content
+            if (checkbox.checked && signature.value.trim().length > 0) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
             }
         }
 
